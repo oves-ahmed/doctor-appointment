@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doctor Appointment Booking</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <h1>Dr. Care Clinic</h1>
+      <p>Book your appointment with trusted professionals</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="booking-form">
+      <h2>Book an Appointment</h2>
+      <form action="submit.php" method="POST">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required />
+
+        <label for="doctor">Select Doctor:</label>
+        <select id="doctor" name="doctor" required>
+          <option value="">-- Choose a Doctor --</option>
+          <option value="Dr. Aisha Khan">Dr. Aisha Khan (General Physician)</option>
+          <option value="Dr. Ravi Mehta">Dr. Ravi Mehta (Cardiologist)</option>
+        </select>
+
+        <label for="date">Preferred Date:</label>
+        <input type="date" id="date" name="date" required />
+
+        <label for="time">Preferred Time:</label>
+        <input type="time" id="time" name="time" required />
+
+        <label for="reason">Reason for Visit:</label>
+        <textarea id="reason" name="reason" rows="4" required></textarea>
+
+        <button type="submit">Book Appointment</button>
+      </form>
+    </section>
+
+    <section class="doctors">
+      <h2>Meet Our Doctors</h2>
+      <div class="doctor-card">
+        <img src="images/doctor1.jpg" alt="Dr. Aisha Khan" />
+        <h3>Dr. Aisha Khan</h3>
+        <p>General Physician</p>
+      </div>
+      <div class="doctor-card">
+        <img src="images/doctor2.jpg" alt="Dr. Ravi Mehta" />
+        <h3>Dr. Ravi Mehta</h3>
+        <p>Cardiologist</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Dr. Care Clinic. All rights reserved.</p>
+  </footer>
+</body>
+</html>
