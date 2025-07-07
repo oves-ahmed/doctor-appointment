@@ -1,15 +1,15 @@
 from flask import Flask, render_template, request, redirect
-from flask_mysqldb import MySQL
+import mysql.connector
 
 app = Flask(__name__)
 
 # MySQL Configuration
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''  # Replace with your MySQL password
-app.config['MYSQL_DB'] = 'clinic'
-
-mysql = MySQL(app)
+db_config = {
+    'host': 'localhost',
+    'user': 'user',     # Create a user in MySQL and replace here
+    'password': 'password',  # Replace with your MySQL password
+    'database': 'clinic'
+}
 
 @app.route('/')
 def index():
@@ -26,16 +26,24 @@ def submit():
         time = request.form['time']
         reason = request.form['reason']
 
-        cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO appointments (name, email, phone, doctor, date, time, reason) VALUES (%s, %s, %s, %s, %s, %s, %s)",
-                    (name, email, phone, doctor, date, time, reason))
-        mysql.connection.commit()
-        cur.close()
-        return redirect('/success')
+        try:
+            conn = mysql.connector.connect(**db_config)
+            cursor = conn.cursor()
+            query = """
+                INSERT INTO appointments (name, email, phone, doctor, date, time, reason)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
+            """
+            cursor.execute(query, (name, email, phone, doctor, date, time, reason))
+            conn.commit()
+            cursor.close()
+            conn.close()
+            return redirect('/success')
+        except mysql.connector.Error as err:
+            return f"<h3>Database Error:</h3><p>{err}</p>"
 
 @app.route('/success')
 def success():
-    return "<h2>✅ Appointment Booked Successfully!</h2><p><a href='/'>Back to Home</a></p>"
+    return render_template('success.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
