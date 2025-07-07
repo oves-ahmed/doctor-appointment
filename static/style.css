@@ -5,8 +5,8 @@ body {
   margin: 0;
 }
 
-header .hero {
-  background: url('images/clinic-banner.jpg') center/cover no-repeat;
+header {
+  background: url('/static/images/clinic-banner.jpg') center/cover no-repeat;
   color: white;
   text-align: center;
   padding: 80px 20px;
@@ -25,16 +25,11 @@ main {
   padding: 30px;
 }
 
-.booking-form {
+form {
   background: white;
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.booking-form h2 {
-  margin-bottom: 20px;
-  color: #2a9d8f;
 }
 
 form label {
@@ -90,11 +85,4 @@ form button:hover {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 10px;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #e9ecef;
-  margin-top: 40px;
 }
