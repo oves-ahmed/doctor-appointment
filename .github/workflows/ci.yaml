@@ -1,0 +1,12 @@
+name: CI Pipleline to test
+
+on: [push]
+  
+jobs:
+  ci-validation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ls
+        run: echo "Pipleline running"
+    
