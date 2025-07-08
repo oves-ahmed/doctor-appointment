@@ -2,7 +2,7 @@ name: CI Pipleline to test
 
 on: [push]
   
-job:
+jobs:
   ci-validation:
     runs on: ubuntu-latest
 
