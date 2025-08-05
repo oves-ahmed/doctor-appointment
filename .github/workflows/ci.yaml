@@ -19,7 +19,7 @@ jobs:
        
       - name: build and push
         run: |
-          docker build -t app-py .
+          docker build -t avesahmed/app-py .
           docker push avesahmed/app-py:latest
   
     
