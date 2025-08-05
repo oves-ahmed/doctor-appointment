@@ -1,0 +1,25 @@
+version: "3"
+services:
+  application:
+    image: py-app
+    ports:
+      - "5000:5000"
+    networks:
+      - py-app-nw
+    volumes:
+      - /data/app 
+    depends_on:
+      - mysqldb
+  mysqldb:
+    image: mysql:8.0
+    networks:
+      - py-app-nw
+    ports: 
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=clinic
+    volumes:
+      - ./app:/var/lib/mysql
+networks:
+  py-app-nw:
